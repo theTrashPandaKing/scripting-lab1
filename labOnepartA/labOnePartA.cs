@@ -1,13 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System;
-using System.ComponentModel;
+﻿using System;
 
 namespace labOnePartA
 {
     internal class Pythagorean
     {
         static void Main(string[] args)
-        {
+        {   
             bool isAnsYes; // bool for whether the user wants to enter their name
             string anonAns; // the answer they put whether yes or no or anything else;
             string yourName; // the name we will use for you
@@ -19,6 +17,7 @@ namespace labOnePartA
             int aSq; // variable for a^2 
             int bSq; // variable for b^2 
             int cSq; // variable for c^2 
+           
             Console.WriteLine("do you want to enter your name? y/n"); // ask the question
             anonAns = Console.ReadLine(); // your input for whether you want to be anonymous
             anonAns = anonAns.ToLower(); // makes the test lowercase so i don't have to add more answers in the array
@@ -37,7 +36,7 @@ namespace labOnePartA
             if(isAnsYes==true){// if response bool is true use this code
               Console.WriteLine("what is your name?"); // asks for your name 
               yourName = Console.ReadLine(); // saves your name as a variable
-              Console.WriteLine($"{yourName}, {yourName} ... i'll remember that, {yourName}");
+              Console.WriteLine($"{yourName}, {yourName} ... i'll remember that, {yourName}"); // shows that it saves your name
             }
             else{// if response bool is false or somehow blank
               yourName = "Anonymous";// sets your name to Anonymous
@@ -52,22 +51,33 @@ namespace labOnePartA
             }
 
             Console.WriteLine("enter a number for side B");
-   
-            
             if(!int.TryParse(Console.ReadLine(), out triB)){ // test if input is an int
                 Console.WriteLine("input was not an int. defaulting to 4");
                 triB=4; // if input is not an int it defaults to 4
             }
             aSq = triA * triA; // finds a^2 by multiplying a by itself
-            Console.WriteLine($"{triA}^2 = {aSq}");
+            Console.WriteLine($"{triA}^2 = {aSq}");//show that the code is working
             bSq = triB * triB; // finds b^2 by multiplying b by itself
-            Console.WriteLine($"{triB}^2 = {bSq}");
+            Console.WriteLine($"{triB}^2 = {bSq}");//shows that the code is working
             cSq = aSq + bSq; // finds c^2 by adding a^2 and b^2 together
-            Console.WriteLine($"{aSq} + {bSq} = {cSq}");
+            Console.WriteLine($"{aSq} + {bSq} = {cSq}");//shows that the code is working
             triC= (float)Math.Sqrt(cSq); // finds the square root of c^2
-            Console.WriteLine($"the square root of {cSq} is {triC}");
+            Console.WriteLine($"the square root of {cSq} is {triC}");//shows it did the math code right
             Console.WriteLine($"So, dear {yourName}, the hypotenuse of the triangle is {triC}"); // the triangles c side length 
-        
+            Console.WriteLine("beyond this point is for the assignment operators. enter starting number.");
+            int assignVar;
+            if(!int.TryParse(Console.ReadLine(), out assignVar)){ // test if input is an int
+                Console.WriteLine("input was not an int. defaulting to 2");
+                assignVar=2; // if input is not an int it defaults to 2
+            }
+            int prevVar=2; // this variable is only for showing the previous code
+           
+            Console.WriteLine($"the starting number is {assignVar}");
+            while(assignVar < 2048){ // so long as assignVar's value is under 2048 this code will keep going
+              prevVar = assignVar;// this will give prevVar the assignVar value
+              assignVar *= 2; // this will times assignvar by 2 and give it the new outcome
+              Console.WriteLine($"{prevVar} *= 2 ={assignVar}");
+            }
         }
     }
 }   
